@@ -1,0 +1,266 @@
+/* =========================================
+   ESTILOS BASE
+   ========================================= */
+:host {
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f7fa;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- HEADER Y MENÚ --- */
+header {
+  background-color: #003399;
+  color: white;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+.main-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu-link {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+.menu-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.btn-tema {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-tema:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- MAIN --- */
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box; /* Importante para padding */
+}
+
+h1 {
+  color: #003399;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+/* --- TABLA (RESPONSIVA) --- */
+.table-wrapper {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 51, 153, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  
+  /* CLAVE PARA MÓVIL: Permite scroll horizontal si la tabla es muy ancha */
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; /* Suavidad en iPhone */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Fuerza un ancho mínimo para que no se aplaste la data */
+}
+
+thead {
+  background-color: #3399FF;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+th { font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
+
+tbody tr:nth-child(even) { background-color: #f8fbff; transition: background-color 0.3s ease; }
+tbody tr:hover { background-color: #99CCFF; color: #003399; cursor: default; }
+.codigo { font-weight: bold; color: #003399; transition: color 0.3s ease; }
+
+/* BADGES */
+.badge { 
+  padding: 5px 10px; 
+  border-radius: 20px; 
+  font-size: 0.8rem; 
+  font-weight: bold; 
+  color: white; 
+  white-space: nowrap; /* Evita que "A TIEMPO" se parta en dos líneas */
+}
+.a-tiempo { background-color: #28a745; }
+.demorado { background-color: #dc3545; }
+.cancelado { background-color: #6c757d; }
+.embarcando { background-color: #ffc107; color: #333; }
+
+.loading { padding: 2rem; text-align: center; color: #3399FF; font-style: italic; }
+
+/* --- FOOTER AVANZADO --- */
+footer {
+  background-color: #003399;
+  color: #fff;
+  padding-top: 2rem;
+  margin-top: auto;
+  transition: background-color 0.3s ease;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px; /* Ancho mínimo antes de saltar de línea */
+}
+
+.footer-section h3 { color: #99CCFF; margin-bottom: 1rem; font-size: 1.1rem; }
+.footer-section p, .footer-section li { font-size: 0.9rem; line-height: 1.6; color: #e0e0e0; }
+.footer-section ul { list-style: none; padding: 0; }
+.footer-section ul li a { color: #e0e0e0; text-decoration: none; transition: color 0.2s; }
+.footer-section ul li a:hover { color: #99CCFF; padding-left: 5px; }
+.socials span { font-weight: bold; cursor: pointer; color: #99CCFF; }
+
+.footer-bottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #bbb;
+}
+
+/* =========================================
+   MODO OSCURO
+   ========================================= */
+.dark-mode { background-color: #121212; color: #e0e0e0; }
+.dark-mode header, .dark-mode footer { background-color: #001a4d; }
+.dark-mode .footer-bottom { background-color: rgba(0, 0, 0, 0.5); }
+.dark-mode h1, .dark-mode .codigo { color: #99CCFF; }
+.dark-mode .table-wrapper { background-color: #1e1e1e; box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); }
+.dark-mode thead { background-color: #002266; }
+.dark-mode th, .dark-mode td { border-bottom: 1px solid #333; color: #e0e0e0; }
+.dark-mode tbody tr:nth-child(even) { background-color: #252525; }
+.dark-mode tbody tr:hover { background-color: #333333; color: #99CCFF; }
+.dark-mode .loading { color: #99CCFF; }
+
+
+
+@media (max-width: 768px) {
+  
+
+  header {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 15px;
+  }
+
+
+  .main-menu {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 15px;
+  }
+
+  main {
+    padding: 1rem; 
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Título un poco más chico */
+  }
+
+  /* 4. Tabla scrolleable */
+  /* Gracias a "overflow-x: auto" en .table-wrapper y "min-width" en table,
+     la tabla no se rompe, solo permite deslizar con el dedo. */
+
+  th, td {
+    padding: 10px; /* Celdas más compactas */
+    font-size: 0.85rem;
+  }
+
+  /* 5. Footer en una sola columna */
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .footer-section {
+    min-width: 100%;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+}
+.dark-mode thead { background-color: #002266; }
+
+.dark-mode th, 
+.dark-mode td {
+  border-bottom: 1px solid #333;
+  color: #e0e0e0;
+}
+
+.dark-mode tbody tr:nth-child(even) { background-color: #252525; }
+.dark-mode tbody tr:hover { background-color: #333333; color: #99CCFF; }
+.dark-mode .loading { color: #99CCFF; }

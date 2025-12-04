@@ -1,0 +1,96 @@
+<div class="app-wrapper" [class.dark-mode]="esModoOscuro">
+
+  <header>
+    <img src="https://mivuelo.att.gob.bo/assets/img/v2/Logo%20MI%20Vuelo.png" 
+         alt="Logo Mi Vuelo" 
+         class="logo-img">
+
+    <nav class="main-menu">
+      <a href="#" class="menu-link">Inicio</a>
+      <a href="https://www.boa.bo/" class="menu-link">Salidas</a>
+      <a href="https://www.boa.bo/" class="menu-link">Llegadas</a>
+      <a href="https://www.facebook.com/viacon.tours" class="menu-link">Ayuda</a>
+      
+      <button class="btn-tema" (click)="cambiarModo()">
+        {{ esModoOscuro ? '☀️' : '🌙' }}
+      </button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Tablero de Salidas y Llegadas</h1>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Aerolínea</th>
+            <th>Destino</th>
+            <th>Hora</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vuelo of listaVuelos">
+            <td class="codigo">{{ vuelo.codigo }}</td>
+            <td>{{ vuelo.aerolinea }}</td>
+            <td>{{ vuelo.destino }}</td>
+            <td>{{ vuelo.hora }}</td>
+            <td>
+              <span class="badge" 
+                    [ngClass]="{
+                      'a-tiempo': vuelo.estado === 'A TIEMPO',
+                      'demorado': vuelo.estado === 'DEMORADO',
+                      'cancelado': vuelo.estado === 'CANCELADO',
+                      'embarcando': vuelo.estado === 'EMBARCANDO'
+                    }">
+                {{ vuelo.estado }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="listaVuelos.length === 0" class="loading">
+        <p>Buscando vuelos en el sistema...</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      
+      <div class="footer-section">
+        <h3>Sobre Mi Vuelo</h3>
+        <p>Proporcionamos información en tiempo real sobre el estado de vuelos nacionales e internacionales para mejorar tu experiencia de viaje.</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#">Consultar Itinerarios</a></li>
+          <li><a href="#">Derechos del Pasajero</a></li>
+          <li><a href="#">Reclamos y Quejas</a></li>
+          <li><a href="#">Preguntas Frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contáctanos</h3>
+        <p>📍 Av. Aviación #123, La Paz</p>
+        <p>📞 800-10-20-30</p>
+        <p>✉️ info@mivuelo.bo</p>
+        <div class="socials">
+          <span>Facebook</span> | <span>Twitter</span> | <span>Instagram</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Sistema de Control Aéreo - Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</div>
