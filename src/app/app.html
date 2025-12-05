@@ -1,95 +1,90 @@
 <div class="app-wrapper" [class.dark-mode]="esModoOscuro">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">  
   <header>
-    <img src="https://mivuelo.att.gob.bo/assets/img/v2/Logo%20MI%20Vuelo.png" 
-         alt="Logo Mi Vuelo" 
+    <!-- Logo actualizado -->
+    <img src="https://artesanramon.com/wp-content/uploads/2022/04/LOGO-ASR-GALERIA.png" 
+         alt="Logo Galería" 
          class="logo-img">
-
+         
     <nav class="main-menu">
       <a href="#" class="menu-link">Inicio</a>
-      <a href="https://www.boa.bo/" class="menu-link">Salidas</a>
-      <a href="https://www.boa.bo/" class="menu-link">Llegadas</a>
-      <a href="https://www.facebook.com/viacon.tours" class="menu-link">Ayuda</a>
+      <a href="#" class="menu-link">Paisajes</a>
+      <a href="#" class="menu-link">Retratos</a>
+      <a href="#" class="menu-link">Contacto</a>
       
+      <!-- BOTÓN DE MODO OSCURO CON ICONOS -->
       <button class="btn-tema" (click)="cambiarModo()">
-        {{ esModoOscuro ? '☀️' : '🌙' }}
-      </button>
+  <i class="fas" [ngClass]="{'fa-sun': esModoOscuro, 'fa-moon': !esModoOscuro}"></i>
+</button>
     </nav>
   </header>
 
   <main class="container">
-    <h1>Tablero de Salidas y Llegadas</h1>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Aerolínea</th>
-            <th>Destino</th>
-            <th>Hora</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let vuelo of listaVuelos">
-            <td class="codigo">{{ vuelo.codigo }}</td>
-            <td>{{ vuelo.aerolinea }}</td>
-            <td>{{ vuelo.destino }}</td>
-            <td>{{ vuelo.hora }}</td>
-            <td>
-              <span class="badge" 
-                    [ngClass]="{
-                      'a-tiempo': vuelo.estado === 'A TIEMPO',
-                      'demorado': vuelo.estado === 'DEMORADO',
-                      'cancelado': vuelo.estado === 'CANCELADO',
-                      'embarcando': vuelo.estado === 'EMBARCANDO'
-                    }">
-                {{ vuelo.estado }}
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div *ngIf="listaVuelos.length === 0" class="loading">
-        <p>Buscando vuelos en el sistema...</p>
+    <h1>ASR GALERIA DE ARTE</h1>
+    
+    <div class="gallery-grid">
+      <div class="photo-card" *ngFor="let foto of listaFotos">
+        <div class="photo-img-container">
+            <img [src]="foto.url" [alt]="foto.titulo">
+        </div>
+        <div class="photo-info">
+            <h2 class="photo-title">{{ foto.titulo }}</h2>
+            <p class="photo-author">Por {{ foto.autor }}</p>
+            <span class="photo-category">{{ foto.categoria }}</span>
+            <span class="photo-date">{{ foto.fecha }}</span>
+        </div>
       </div>
+    </div>
+    
+    <div *ngIf="listaFotos.length === 0" class="loading">
+      <p>Cargando imágenes de la galería...</p>
     </div>
   </main>
 
   <footer>
-    <div class="footer-content">
+    <div class="footer-content-cols">
       
-      <div class="footer-section">
-        <h3>Sobre Mi Vuelo</h3>
-        <p>Proporcionamos información en tiempo real sobre el estado de vuelos nacionales e internacionales para mejorar tu experiencia de viaje.</p>
+      <div class="footer-section contact-info">
+        <h3>Galería Fotográfica</h3>
+        <p>Capturando la belleza de la luz y el color en cada toma.</p>
+        <p class="contact-detail">📧 foto@galeria.com</p>
+        <p class="contact-detail">📞 +591 700 0000</p>
       </div>
 
-      <div class="footer-section">
-        <h3>Enlaces Rápidos</h3>
+      <div class="footer-section quick-links">
+        <h3>Navegación</h3>
         <ul>
-          <li><a href="#">Consultar Itinerarios</a></li>
-          <li><a href="#">Derechos del Pasajero</a></li>
-          <li><a href="#">Reclamos y Quejas</a></li>
-          <li><a href="#">Preguntas Frecuentes</a></li>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Paisajes</a></li>
+          <li><a href="#">Retratos</a></li>
+          <li><a href="#">Contacto</a></li>
         </ul>
       </div>
 
-      <div class="footer-section">
-        <h3>Contáctanos</h3>
-        <p>📍 Av. Aviación #123, La Paz</p>
-        <p>📞 800-10-20-30</p>
-        <p>✉️ info@mivuelo.bo</p>
-        <div class="socials">
-          <span>Facebook</span> | <span>Twitter</span> | <span>Instagram</span>
+      <div class="footer-section more-info">
+        <h3>Legal y Ayuda</h3>
+        <ul>
+          <li><a href="#">Términos de Uso</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Preguntas Frecuentes</a></li>
+          <li><a href="#">Comprar Prints</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section social-links">
+        <h3>Redes Sociales</h3>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
 
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 Sistema de Control Aéreo - Todos los derechos reservados.</p>
+      <p>© 2025 Galería Fotográfica. Todos los derechos reservados.</p>
     </div>
   </footer>
 
